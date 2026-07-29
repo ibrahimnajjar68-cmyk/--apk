@@ -1,15 +1,15 @@
 {
   "appId": "com.hamzanajjar.app",
-  "appName": ".منصة تصميم المواقع",
+  "appName": "محول الموقع إلي تطبيق",
   "webDir": "www",
   "server": {
-    "url": "https://build-syria-genius.lovable.app/",
+    "url": "https://smart-app-workbench.lovable.app/",
     "cleartext": false,
     "androidScheme": "https"
   },
   "android": {
     "allowMixedContent": false,
-    "backgroundColor": "#0f172a",
+    "backgroundColor": "#000000",
     "webContentsDebuggingEnabled": false,
     "captureInput": true,
     "useLegacyBridge": false
@@ -19,7 +19,7 @@
       "enabled": true
     },
     "SplashScreen": {
-      "backgroundColor": "#0f172a",
+      "backgroundColor": "#000000",
       "launchAutoHide": true,
       "launchShowDuration": 1200
     }
