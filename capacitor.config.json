@@ -1,0 +1,27 @@
+{
+  "appId": "com.hamzanajjar.app",
+  "appName": ".منصة تصميم المواقع",
+  "webDir": "www",
+  "server": {
+    "url": "https://build-syria-genius.lovable.app/",
+    "cleartext": false,
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#0f172a",
+    "webContentsDebuggingEnabled": false,
+    "captureInput": true,
+    "useLegacyBridge": false
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    },
+    "SplashScreen": {
+      "backgroundColor": "#0f172a",
+      "launchAutoHide": true,
+      "launchShowDuration": 1200
+    }
+  }
+}
