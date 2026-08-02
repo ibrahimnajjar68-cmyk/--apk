@@ -1,9 +1,9 @@
 {
-  "appId": "com.hamza.web",
-  "appName": "معاملتي | دليل المعاملات",
+  "appId": "com.hamzanajjar.app",
+  "appName": "معاملتي",
   "webDir": "www",
   "server": {
-    "url": "https://clinquant-kangaroo-06907e.netlify.app/",
+    "url": "https://deed-wise-wizard.lovable.app/",
     "cleartext": false,
     "androidScheme": "https"
   },
