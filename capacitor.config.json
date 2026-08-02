@@ -1,9 +1,9 @@
 {
-  "appId": "com.hamzanajjar.app",
-  "appName": "محول الموقع إلي تطبيق",
+  "appId": "com.hamza.web",
+  "appName": "معاملتي | دليل المعاملات",
   "webDir": "www",
   "server": {
-    "url": "https://smart-app-workbench.lovable.app/",
+    "url": "https://clinquant-kangaroo-06907e.netlify.app/",
     "cleartext": false,
     "androidScheme": "https"
   },
