@@ -1,12 +1,12 @@
-# معاملتي
+# محول الموقع إلي تطبيق
 
 مشروع Web-to-App من **محول المواقع الذكي — المطور حمزة نجار**.
 
-- الموقع: https://deed-wise-wizard.lovable.app/
-- اسم الحزمة: `com.hamzanajjar.app`
-- الأذونات المفعّلة: INTERNET، ACCESS_NETWORK_STATE، ACCESS_WIFI_STATE، CAMERA، READ_EXTERNAL_STORAGE، WRITE_EXTERNAL_STORAGE، READ_MEDIA_IMAGES، READ_MEDIA_VIDEO، RECORD_AUDIO، MODIFY_AUDIO_SETTINGS، VIBRATE، POST_NOTIFICATIONS، WAKE_LOCK، READ_CALENDAR، WRITE_CALENDAR، GET_ACCOUNTS
+- الموقع: https://smart-app-workbench.lovable.app/
+- اسم الحزمة: `com.mhwlalmwqailyttbyq`
+- الأذونات المفعّلة: INTERNET، ACCESS_NETWORK_STATE، ACCESS_WIFI_STATE، CAMERA، READ_EXTERNAL_STORAGE، WRITE_EXTERNAL_STORAGE، READ_MEDIA_IMAGES، READ_MEDIA_VIDEO، VIBRATE، POST_NOTIFICATIONS، WAKE_LOCK، USE_BIOMETRIC، USE_FINGERPRINT، GET_ACCOUNTS، FOREGROUND_SERVICE، FOREGROUND_SERVICE_MEDIA_PLAYBACK
 
-## 🚀 الطريقة (١): APK مجاني تلقائياً عبر GitHub Actions
+## 🚀 الطريقة (١): APK تلقائياً عبر GitHub Actions
 
 1. أنشئ مستودعاً جديداً **Public** على GitHub.
 2. فك ضغط هذا الملف وارفع **محتوياته** (وليس ملف ZIP نفسه) عبر *Add file → Upload files* ثم *Commit*.

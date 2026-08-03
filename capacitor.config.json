@@ -1,11 +1,14 @@
 {
-  "appId": "com.hamzanajjar.app",
-  "appName": "معاملتي",
+  "appId": "com.mhwlalmwqailyttbyq",
+  "appName": "محول الموقع إلي تطبيق",
   "webDir": "www",
   "server": {
-    "url": "https://deed-wise-wizard.lovable.app/",
+    "url": "https://smart-app-workbench.lovable.app/",
     "cleartext": false,
-    "androidScheme": "https"
+    "androidScheme": "https",
+    "allowNavigation": [
+      "*"
+    ]
   },
   "android": {
     "allowMixedContent": false,
@@ -16,12 +19,17 @@
   },
   "plugins": {
     "CapacitorHttp": {
+      "enabled": false
+    },
+    "CapacitorCookies": {
       "enabled": true
     },
     "SplashScreen": {
       "backgroundColor": "#000000",
       "launchAutoHide": true,
-      "launchShowDuration": 1200
+      "launchShowDuration": 400,
+      "androidScaleType": "FIT_CENTER",
+      "showSpinner": false
     }
   }
 }
