@@ -1,5 +1,5 @@
 {
-  "appId": "com.mhwlalmwqailyttbyq",
+  "appId": "com.hamzanajjar.mhwlalmwqailyttbyq",
   "appName": "محول الموقع إلي تطبيق",
   "webDir": "www",
   "server": {
@@ -12,7 +12,7 @@
   },
   "android": {
     "allowMixedContent": false,
-    "backgroundColor": "#000000",
+    "backgroundColor": "#0f172a",
     "webContentsDebuggingEnabled": false,
     "captureInput": true,
     "useLegacyBridge": false
@@ -25,9 +25,9 @@
       "enabled": true
     },
     "SplashScreen": {
-      "backgroundColor": "#000000",
+      "backgroundColor": "#0f172a",
       "launchAutoHide": true,
-      "launchShowDuration": 400,
+      "launchShowDuration": 1500,
       "androidScaleType": "FIT_CENTER",
       "showSpinner": false
     }

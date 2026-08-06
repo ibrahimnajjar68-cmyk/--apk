@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">محول الموقع إلي تطبيق</string>
     <string name="title_activity_main">محول الموقع إلي تطبيق</string>
-    <string name="package_name">com.mhwlalmwqailyttbyq</string>
-    <string name="custom_url_scheme">com.mhwlalmwqailyttbyq</string>
+    <string name="package_name">com.hamzanajjar.mhwlalmwqailyttbyq</string>
+    <string name="custom_url_scheme">com.hamzanajjar.mhwlalmwqailyttbyq</string>
 </resources>
