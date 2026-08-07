@@ -1,7 +1,7 @@
 {
   "appName": "محول الموقع إلي تطبيق",
   "appIcon": "",
-  "packageName": "com.lovable.mhwlalmwqailyttbyq",
+  "packageName": "com.hamzanajjar.mhwlalmwqailyttbyq",
   "versionCode": 1,
   "versionName": "1.0",
   "keystoreMode": "auto",
@@ -53,6 +53,6 @@
   "singleDeviceLock": false,
   "removeWatermark": true,
   "websiteUrl": "https://smart-app-workbench.lovable.app/",
-  "generatedAt": "2026-08-06T00:33:02.060Z",
+  "generatedAt": "2026-08-07T00:30:02.366Z",
   "generator": "Smart Website to App Maker — Developer Hamza Najjar"
 }
