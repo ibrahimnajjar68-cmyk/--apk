@@ -1,9 +1,9 @@
 {
-  "appId": "com.hamzanajjar.mhwlalmwqailyttbyq",
-  "appName": "محول الموقع إلي تطبيق",
+  "appId": "com.hamzanajjar.mnshtsmymalmwaqa",
+  "appName": ".منصة تصميم المواقع",
   "webDir": "www",
   "server": {
-    "url": "https://smart-app-workbench.lovable.app/",
+    "url": "https://build-syria-genius.lovable.app/",
     "cleartext": false,
     "androidScheme": "https",
     "allowNavigation": [

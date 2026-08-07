@@ -1,7 +1,7 @@
 {
-  "appName": "محول الموقع إلي تطبيق",
+  "appName": ".منصة تصميم المواقع",
   "appIcon": "",
-  "packageName": "com.hamzanajjar.mhwlalmwqailyttbyq",
+  "packageName": "com.hamzanajjar.mnshtsmymalmwaqa",
   "versionCode": 1,
   "versionName": "1.0",
   "keystoreMode": "auto",
@@ -52,7 +52,7 @@
   "otaUpdates": true,
   "singleDeviceLock": false,
   "removeWatermark": true,
-  "websiteUrl": "https://smart-app-workbench.lovable.app/",
-  "generatedAt": "2026-08-07T00:38:14.327Z",
+  "websiteUrl": "https://build-syria-genius.lovable.app/",
+  "generatedAt": "2026-08-07T00:49:03.028Z",
   "generator": "Smart Website to App Maker — Developer Hamza Najjar"
 }
