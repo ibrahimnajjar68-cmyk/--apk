@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">.منصة تصميم المواقع</string>
     <string name="title_activity_main">.منصة تصميم المواقع</string>
-    <string name="package_name">com.hamzanajjar.mnshtsmymalmwaqa</string>
-    <string name="custom_url_scheme">com.hamzanajjar.mnshtsmymalmwaqa</string>
+    <string name="package_name">com.app.mnshts</string>
+    <string name="custom_url_scheme">com.app.mnshts</string>
 </resources>
