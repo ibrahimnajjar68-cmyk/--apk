@@ -50,7 +50,7 @@
   "pullToRefresh": true,
   "backgroundAudio": false,
   "splashDuration": 1500,
-  "fontScale": 90,
+  "fontScale": 100,
   "animationType": "fade",
   "otaUpdates": true,
   "singleDeviceLock": false,
@@ -66,6 +66,6 @@
   "statusApi": "https://c--6130cd97-5925-4819-b77c-9025c3585781-prod.lovable.cloud/rest/v1/rpc/app_status",
   "statusKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRva3dneGlreW15dG5ieG9uaXNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQxNjUwNDcsImV4cCI6MjA5OTc0MTA0N30.CGEoc77GhSjzOCaCSalINVjiSGbkpa5LeTDthwXX3iE",
   "supportPhone": "+963984264508",
-  "generatedAt": "2026-09-09T00:11:58.472Z",
+  "generatedAt": "2026-09-09T10:03:21.050Z",
   "generator": "Smart Website to App Maker — Developer Hamza Najjar"
 }
