@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">.منصة تصميم المواقع</string>
-    <string name="title_activity_main">.منصة تصميم المواقع</string>
-    <string name="package_name">com.app.mnshts</string>
-    <string name="custom_url_scheme">com.app.mnshts</string>
+    <string name="app_name">عالم حمزة النجار</string>
+    <string name="title_activity_main">عالم حمزة النجار</string>
+    <string name="package_name">com.hamzanajjar.aalmhmzhalnjar</string>
+    <string name="custom_url_scheme">com.hamzanajjar.aalmhmzhalnjar</string>
 </resources>

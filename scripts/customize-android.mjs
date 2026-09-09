@@ -105,22 +105,29 @@ if (cfg.permGallery) runtime.push("android.permission.READ_MEDIA_IMAGES", "andro
 if (cfg.permPushNotifications) runtime.push("android.permission.POST_NOTIFICATIONS");
 if (cfg.permCalendar) runtime.push("android.permission.READ_CALENDAR", "android.permission.WRITE_CALENDAR");
 
-// Watermark / AI-badge remover injected into every page of the site
-const wmJs = [
-  "(function(){",
-  "var SEL=['#lovable-badge','a[href*=\"lovable.dev\"]','a[href*=\"lovable.app/?utm\"]','[id*=\"lovable-badge\"]',",
-  "'[class*=\"lovable-badge\"]','a[href*=\"wix.com\"][class*=\"Banner\"]','#WIX_ADS','#wixAdsTop',",
-  "'a[href*=\"wordpress.com\"].powered-by','#bubble-badge','a[href*=\"bubble.io\"][class*=\"badge\"]',",
-  "'a[href*=\"webflow.com\"].w-webflow-badge','.w-webflow-badge','a[href*=\"framer.com\"][class*=\"badge\"]',",
-  "'[data-testid*=\"badge\"][href*=\"lovable\"]','#carrd-badge','.carrd-badge','a[href*=\"glideapps.com\"]'];",
-  "function kill(){for(var i=0;i<SEL.length;i++){var n=document.querySelectorAll(SEL[i]);",
-  "for(var j=0;j<n.length;j++){n[j].style.setProperty('display','none','important');n[j].remove();}}}",
-  "var st=document.getElementById('__wm_rm');if(!st){st=document.createElement('style');st.id='__wm_rm';",
-  "st.textContent=SEL.join(',')+'{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important}';",
-  "(document.head||document.documentElement).appendChild(st);}",
-  "kill();",
-  "})();",
-].join("");
+// Watermark / AI-badge remover injected into every page of the site (universal engine)
+const wmPath = "assets/watermark-remover.js";
+const wmJs = fs.existsSync(wmPath) ? fs.readFileSync(wmPath, "utf8") : "";
+
+// Offline fallback page copied into the app assets
+if (fs.existsSync("assets/offline.html")) {
+  const assetsDir = path.join(MAIN, "assets");
+  fs.mkdirSync(assetsDir, { recursive: true });
+  fs.copyFileSync("assets/offline.html", path.join(assetsDir, "offline.html"));
+}
+
+// Device-admin receiver (anti-uninstall)
+if (cfg.antiUninstall) {
+  const rec = [
+    "package " + cfg.packageName + ";",
+    "",
+    "import android.app.admin.DeviceAdminReceiver;",
+    "",
+    "public class AdminReceiver extends DeviceAdminReceiver {",
+    "}",
+  ].join("\n");
+  fs.writeFileSync(path.join(pkgPath, "AdminReceiver.java"), rec + "\n");
+}
 
 const lines = [];
 lines.push("package " + cfg.packageName + ";");
@@ -130,6 +137,13 @@ lines.push("import android.os.Bundle;");
 lines.push("import android.os.Handler;");
 lines.push("import android.os.Looper;");
 lines.push("import android.view.WindowManager;");
+lines.push("import android.app.AlertDialog;");
+lines.push("import android.app.admin.DevicePolicyManager;");
+lines.push("import android.content.ComponentName;");
+lines.push("import android.content.Context;");
+lines.push("import android.content.Intent;");
+lines.push("import android.net.ConnectivityManager;");
+lines.push("import android.net.Uri;");
 lines.push("import android.webkit.CookieManager;");
 lines.push("import android.webkit.WebSettings;");
 lines.push("import androidx.core.app.ActivityCompat;");
@@ -158,6 +172,72 @@ lines.push("    s.setDisplayZoomControls(false);");
 lines.push("    s.setTextZoom(" + Math.round(cfg.fontScale || 100) + ");");
 lines.push("    s.setMediaPlaybackRequiresUserGesture(false);");
 lines.push("    s.setCacheMode(" + (cfg.disableCache ? "WebSettings.LOAD_NO_CACHE" : "WebSettings.LOAD_DEFAULT") + ");");
+if (cfg.featureOffline) {
+  // Real offline behaviour: serve the cached copy of the site instead of a black screen.
+  lines.push("    s.setDomStorageEnabled(true);");
+  lines.push("    s.setAllowFileAccess(true);");
+  lines.push("    ConnectivityManager cmgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);");
+  lines.push("    boolean online = cmgr != null && cmgr.getActiveNetworkInfo() != null && cmgr.getActiveNetworkInfo().isConnected();");
+  lines.push("    s.setCacheMode(online ? WebSettings.LOAD_DEFAULT : WebSettings.LOAD_CACHE_ELSE_NETWORK);");
+  lines.push("    if (!online) {");
+  lines.push("      this.bridge.getWebView().setWebViewClient(new android.webkit.WebViewClient() {");
+  lines.push("        @Override public void onReceivedError(android.webkit.WebView v, int c, String d, String u) {");
+  lines.push("          v.loadUrl(\"file:///android_asset/offline.html\");");
+  lines.push("        }");
+  lines.push("      });");
+  lines.push("    }");
+}
+if (cfg.antiUninstall) {
+  // Ask for Device Administrator rights so the app cannot be uninstalled casually.
+  lines.push("    try {");
+  lines.push("      DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);");
+  lines.push("      ComponentName admin = new ComponentName(this, AdminReceiver.class);");
+  lines.push("      if (dpm != null && !dpm.isAdminActive(admin)) {");
+  lines.push("        Intent ai = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);");
+  lines.push("        ai.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, admin);");
+  lines.push("        ai.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, \"حماية التطبيق من الحذف\");");
+  lines.push("        startActivity(ai);");
+  lines.push("      }");
+  lines.push("    } catch (Exception e) {}");
+}
+if (cfg.statusApi && cfg.statusKey) {
+  // Remote kill-switch: ask the site whether this app is still active.
+  lines.push("    final String statusUrl = " + JSON.stringify(cfg.statusApi) + ";");
+  lines.push("    final String statusKey = " + JSON.stringify(cfg.statusKey) + ";");
+  lines.push("    final String pkgName = " + JSON.stringify(cfg.packageName) + ";");
+  lines.push("    final String phone = " + JSON.stringify(cfg.supportPhone || "+963984264508") + ";");
+  lines.push("    new Thread(new Runnable() { @Override public void run() {");
+  lines.push("      try {");
+  lines.push("        java.net.HttpURLConnection c = (java.net.HttpURLConnection) new java.net.URL(statusUrl).openConnection();");
+  lines.push("        c.setRequestMethod(\"POST\");");
+  lines.push("        c.setRequestProperty(\"apikey\", statusKey);");
+  lines.push("        c.setRequestProperty(\"Content-Type\", \"application/json\");");
+  lines.push("        c.setDoOutput(true);");
+  lines.push("        c.getOutputStream().write((\"{\\\"_package_name\\\":\\\"\" + pkgName + \"\\\"}\").getBytes(\"UTF-8\"));");
+  lines.push("        java.io.BufferedReader r = new java.io.BufferedReader(new java.io.InputStreamReader(c.getInputStream(), \"UTF-8\"));");
+  lines.push("        StringBuilder sb = new StringBuilder(); String ln;");
+  lines.push("        while ((ln = r.readLine()) != null) sb.append(ln);");
+  lines.push("        r.close();");
+  lines.push("        final boolean blocked = sb.toString().contains(\"\\\"enabled\\\":false\");");
+  lines.push("        if (blocked) {");
+  lines.push("          runOnUiThread(new Runnable() { @Override public void run() {");
+  lines.push("            new AlertDialog.Builder(MainActivity.this)");
+  lines.push("              .setCancelable(false)");
+  lines.push("              .setTitle(\"انتهى الاشتراك\")");
+  lines.push("              .setMessage(\"لقد انتهى اشتراكك. يرجى التواصل مع المالك لتجديد الخدمة: \" + phone + \" أو الدخول للموقع وتجديد الاشتراك عبر الشام كاش.\")");
+  lines.push("              .setPositiveButton(\"واتساب المالك\", new android.content.DialogInterface.OnClickListener() {");
+  lines.push("                @Override public void onClick(android.content.DialogInterface d, int w) {");
+  lines.push("                  startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(\"https://wa.me/\" + phone.replace(\"+\", \"\"))));");
+  lines.push("                  finish();");
+  lines.push("                } })");
+  lines.push("              .setNegativeButton(\"إغلاق\", new android.content.DialogInterface.OnClickListener() {");
+  lines.push("                @Override public void onClick(android.content.DialogInterface d, int w) { finish(); } })");
+  lines.push("              .show();");
+  lines.push("          } });");
+  lines.push("        }");
+  lines.push("      } catch (Exception e) {}");
+  lines.push("    } }).start();");
+}
 if (cfg.runtimePermissionPrompt !== false && runtime.length) {
   lines.push("    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {");
   lines.push("      ActivityCompat.requestPermissions(this, new String[]{" + runtime.map((p) => '"' + p + '"').join(", ") + "}, 4711);");
