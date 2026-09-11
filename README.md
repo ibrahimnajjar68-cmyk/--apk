@@ -1,9 +1,9 @@
-# عالم حمزة النجار
+# محوّل النص إلى صوت واقعي
 
 مشروع Web-to-App من **محول المواقع الذكي — المطور حمزة نجار**.
 
-- الموقع: https://hzn-1.base44.app/
-- اسم الحزمة: `com.hamzanajjar.aalmhmzhalnjar`
+- الموقع: https://talk-like-you-arabic.lovable.app/
+- اسم الحزمة: `com.hamzanajjar.mhwlalnsilaswtwaqay`
 - الأذونات المفعّلة: INTERNET، ACCESS_NETWORK_STATE، ACCESS_WIFI_STATE، CAMERA، READ_EXTERNAL_STORAGE، WRITE_EXTERNAL_STORAGE، READ_MEDIA_IMAGES، READ_MEDIA_VIDEO، VIBRATE، POST_NOTIFICATIONS، WAKE_LOCK، GET_ACCOUNTS
 
 ## 🚀 الطريقة (١): APK تلقائياً عبر GitHub Actions

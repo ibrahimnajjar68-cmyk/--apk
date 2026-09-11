@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">عالم حمزة النجار</string>
-    <string name="title_activity_main">عالم حمزة النجار</string>
-    <string name="package_name">com.hamzanajjar.aalmhmzhalnjar</string>
-    <string name="custom_url_scheme">com.hamzanajjar.aalmhmzhalnjar</string>
+    <string name="app_name">محوّل النص إلى صوت واقعي</string>
+    <string name="title_activity_main">محوّل النص إلى صوت واقعي</string>
+    <string name="package_name">com.hamzanajjar.mhwlalnsilaswtwaqay</string>
+    <string name="custom_url_scheme">com.hamzanajjar.mhwlalnsilaswtwaqay</string>
 </resources>

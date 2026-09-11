@@ -1,7 +1,7 @@
 {
-  "appName": "عالم حمزة النجار",
+  "appName": "محوّل النص إلى صوت واقعي",
   "appIcon": "",
-  "packageName": "com.hamzanajjar.aalmhmzhalnjar",
+  "packageName": "com.hamzanajjar.mhwlalnsilaswtwaqay",
   "versionCode": 1,
   "versionName": "1.0",
   "keystoreMode": "auto",
@@ -62,10 +62,10 @@
   "targetDesktop": false,
   "targetAllDevices": true,
   "authMethods": [],
-  "websiteUrl": "https://hzn-1.base44.app/",
+  "websiteUrl": "https://talk-like-you-arabic.lovable.app/",
   "statusApi": "https://c--6130cd97-5925-4819-b77c-9025c3585781-prod.lovable.cloud/rest/v1/rpc/app_status",
   "statusKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRva3dneGlreW15dG5ieG9uaXNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQxNjUwNDcsImV4cCI6MjA5OTc0MTA0N30.CGEoc77GhSjzOCaCSalINVjiSGbkpa5LeTDthwXX3iE",
   "supportPhone": "+963984264508",
-  "generatedAt": "2026-09-09T10:03:21.050Z",
+  "generatedAt": "2026-09-11T20:20:51.195Z",
   "generator": "Smart Website to App Maker — Developer Hamza Najjar"
 }

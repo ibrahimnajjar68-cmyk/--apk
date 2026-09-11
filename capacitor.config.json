@@ -1,9 +1,9 @@
 {
-  "appId": "com.hamzanajjar.aalmhmzhalnjar",
-  "appName": "عالم حمزة النجار",
+  "appId": "com.hamzanajjar.mhwlalnsilaswtwaqay",
+  "appName": "محوّل النص إلى صوت واقعي",
   "webDir": "www",
   "server": {
-    "url": "https://hzn-1.base44.app/",
+    "url": "https://talk-like-you-arabic.lovable.app/",
     "cleartext": false,
     "androidScheme": "https",
     "allowNavigation": [
