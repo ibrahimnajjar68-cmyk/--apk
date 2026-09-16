@@ -1,7 +1,7 @@
 {
-  "appName": ".منصة تصميم المواقع",
+  "appName": "حمزة النجار",
   "appIcon": "",
-  "packageName": "com.hamzanajjar.mnshtsmymalmwaqa",
+  "packageName": "com.hamzanajjar.hmzhalnjar",
   "versionCode": 1,
   "versionName": "1.0",
   "keystoreMode": "auto",
@@ -62,10 +62,10 @@
   "targetDesktop": false,
   "targetAllDevices": true,
   "authMethods": [],
-  "websiteUrl": "https://build-syria-genius.lovable.app/",
+  "websiteUrl": "https://hzn-1.base44.app/",
   "statusApi": "https://c--6130cd97-5925-4819-b77c-9025c3585781-prod.lovable.cloud/rest/v1/rpc/app_status",
   "statusKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRva3dneGlreW15dG5ieG9uaXNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQxNjUwNDcsImV4cCI6MjA5OTc0MTA0N30.CGEoc77GhSjzOCaCSalINVjiSGbkpa5LeTDthwXX3iE",
   "supportPhone": "+963984264508",
-  "generatedAt": "2026-09-16T13:08:59.680Z",
+  "generatedAt": "2026-09-16T13:12:05.160Z",
   "generator": "Smart Website to App Maker — Developer Hamza Najjar"
 }

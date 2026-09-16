@@ -1,9 +1,9 @@
 {
-  "appId": "com.hamzanajjar.mnshtsmymalmwaqa",
-  "appName": ".منصة تصميم المواقع",
+  "appId": "com.hamzanajjar.hmzhalnjar",
+  "appName": "حمزة النجار",
   "webDir": "www",
   "server": {
-    "url": "https://build-syria-genius.lovable.app/",
+    "url": "https://hzn-1.base44.app/",
     "cleartext": false,
     "androidScheme": "https",
     "allowNavigation": [
