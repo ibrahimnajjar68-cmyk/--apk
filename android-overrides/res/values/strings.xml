@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">حمزة النجار</string>
-    <string name="title_activity_main">حمزة النجار</string>
-    <string name="package_name">com.hamzanajjar.hmzhalnjar</string>
-    <string name="custom_url_scheme">com.hamzanajjar.hmzhalnjar</string>
+    <string name="app_name">محول الموقع إلي تطبيق</string>
+    <string name="title_activity_main">محول الموقع إلي تطبيق</string>
+    <string name="package_name">com.hamzanajjar.mhwlalmwqailyttbyq</string>
+    <string name="custom_url_scheme">com.hamzanajjar.mhwlalmwqailyttbyq</string>
 </resources>

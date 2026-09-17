@@ -1,9 +1,9 @@
 {
-  "appId": "com.hamzanajjar.hmzhalnjar",
-  "appName": "حمزة النجار",
+  "appId": "com.hamzanajjar.mhwlalmwqailyttbyq",
+  "appName": "محول الموقع إلي تطبيق",
   "webDir": "www",
   "server": {
-    "url": "https://hzn-1.base44.app/",
+    "url": "https://appifyio.lovable.app/",
     "cleartext": false,
     "androidScheme": "https",
     "allowNavigation": [

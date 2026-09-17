@@ -23,16 +23,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Pre-accept Android SDK Licenses
-        run: |
-          mkdir -p $ANDROID_SDK_ROOT/licenses
-          echo -e "\n89339e542afb5630c58ed00c99b0007d2f3757dd\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a6371d6a4d13a0f7b266227678d2124e2" > $ANDROID_SDK_ROOT/licenses/android-sdk-license
-          echo -e "\n84831b9409646a323e05a0b6931d86aaa1335f67" > $ANDROID_SDK_ROOT/licenses/android-sdk-preview-license
-          echo -e "\n33b6a2b64925ea171387396a11e0725e11f6300a" > $ANDROID_SDK_ROOT/licenses/google-gdk-license
-          echo -e "\ne9672915a443004b307b55311243984883b80897" > $ANDROID_SDK_ROOT/licenses/intel-android-sysimage-license
-          echo -e "\nd9754edd51764c3978035f7d2db642782e20d5f1" > $ANDROID_SDK_ROOT/licenses/android-googletv-license
-          echo -e "\n6010071081514edd2999351321d2a01e5a65095b" > $ANDROID_SDK_ROOT/licenses/mips-android-sysimage-license
-          yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
@@ -50,7 +42,7 @@ jobs:
         run: chmod +x android/gradlew
 
       - name: Build Debug APK
-        run: cd android && ./gradlew assembleDebug --no-daemon --stacktrace -Pandroid.builder.sdkDownload=true
+        run: cd android && ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Collect APK
         run: |
@@ -67,5 +59,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: Build #${{ github.run_number }}
+          name: Build ${{ github.run_number }}
           files: dist/app.apk
