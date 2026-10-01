@@ -10,28 +10,40 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          accept-android-sdk-licenses: true
-
-      - name: Accept all Android SDK licenses
+      # Android SDK is preinstalled on GitHub runners — no external action needed.
+      # Write license hashes directly so Gradle never stops on "licenses not accepted".
+      - name: Prepare Android SDK and accept licenses
+        shell: bash
         run: |
-          yes | sdkmanager --licenses || true
-          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+          set +e
+          SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
+          mkdir -p "$SDK/licenses" 2>/dev/null || sudo mkdir -p "$SDK/licenses"
+          [ -w "$SDK/licenses" ] || sudo chmod -R a+rwX "$SDK/licenses"
+          printf "\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$SDK/licenses/android-sdk-license"
+          printf "\n84831b9409646a918e30573bab4c9c91346d8abd\n504667f4c0de7af1a06de9f4b1727b84351f2910" > "$SDK/licenses/android-sdk-preview-license"
+          printf "\n859f317696f67ef3d7f30a50a5560e7834b43903" > "$SDK/licenses/android-sdk-arm-dbt-license"
+          printf "\n33b6a2b64607f11b759f320ef9dff4ae5c47d97a" > "$SDK/licenses/google-gdk-license"
+          printf "\nd975f751698a77b662f1254ddbeed3901e976f5a" > "$SDK/licenses/intel-android-extra-license"
+          printf "\ne9acab5b5fbb560a72cfaecce8946896ff6aab9d" > "$SDK/licenses/mips-android-sysimage-license"
+          SDKM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          if [ -x "$SDKM" ]; then yes | "$SDKM" --licenses > /dev/null 2>&1; fi
+          ls -la "$SDK/licenses"
+          exit 0
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
@@ -57,7 +69,7 @@ jobs:
           cp android/app/build/outputs/apk/debug/app-debug.apk dist/app.apk
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: app-apk
           path: dist/app.apk
