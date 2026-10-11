@@ -1,0 +1,35 @@
+{
+  "appId": "com.hamzanajjar.ttbyqjdydmhwl",
+  "appName": "تطبيق جديد — مُحوِّل",
+  "webDir": "www",
+  "server": {
+    "url": "https://appifyio.lovable.app/builder",
+    "cleartext": false,
+    "androidScheme": "https",
+    "allowNavigation": [
+      "*"
+    ]
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#0f172a",
+    "webContentsDebuggingEnabled": false,
+    "captureInput": true,
+    "useLegacyBridge": false
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": false
+    },
+    "CapacitorCookies": {
+      "enabled": true
+    },
+    "SplashScreen": {
+      "backgroundColor": "#0f172a",
+      "launchAutoHide": true,
+      "launchShowDuration": 1500,
+      "androidScaleType": "FIT_CENTER",
+      "showSpinner": false
+    }
+  }
+}
