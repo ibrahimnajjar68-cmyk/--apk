@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">تطبيق جديد — مُحوِّل</string>
-    <string name="title_activity_main">تطبيق جديد — مُحوِّل</string>
-    <string name="package_name">com.hamzanajjar.ttbyqjdydmhwl</string>
-    <string name="custom_url_scheme">com.hamzanajjar.ttbyqjdydmhwl</string>
+    <string name="app_name">كوديز</string>
+    <string name="title_activity_main">كوديز</string>
+    <string name="package_name">com.app.Codes </string>
+    <string name="custom_url_scheme">com.app.Codes </string>
 </resources>
